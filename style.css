@@ -1,10 +1,27 @@
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
     font: 100%/1.5 system-ui;
   }
+  
+  nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  
+  figure {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px 0;
+  }
+  
   .profile-photo {
-    width: 200px;
+    display: block;
+    width: 100%;
     height: auto;
+  }
+  
+  figcaption {
+    margin-top: 8px;
+    text-align: center;
   }
