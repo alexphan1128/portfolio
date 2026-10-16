@@ -8,28 +8,9 @@
 </head>
 
 <body>
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="../projects/index.html">Projects</a>
-    <a href="../contact/index.html" class="current">Contact</a>
-    <a href="../resume/index.html">Resume</a>
-    <a
-      href="https://github.com/alexphan1128"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      GitHub
-    </a>
-  </nav>
-
   <h1>Contact</h1>
 
-  <form action="mailto:ahp009@ucsd.edu" method="POST" enctype="text/plain">
-    <label>
-      Email:
-      <input name="email" type="email" required>
-    </label>
-
+  <form action="mailto:ahp009@ucsd.edu">
     <label>
       Subject:
       <input name="subject" required>
@@ -40,7 +21,9 @@
       <textarea name="body" required></textarea>
     </label>
 
-    <button>Send</button>
+    <button type="submit">Send</button>
   </form>
+
+  <script type="module" src="../global.js"></script>
 </body>
 </html>
