@@ -1,0 +1,74 @@
+[
+{
+    "title": "Food Waste Climate Analysis",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "An analysis of food waste, methane emissions, food recovery, and food insecurity in San Diego County."
+  },
+  {
+    "title": "SQL Customer Database Analysis",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Used SQL queries to filter customer data, calculate totals, and analyze order information."
+  },
+  {
+    "title": "Python Data Cleaning Project",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Cleaned and organized datasets using Python, pandas, and NumPy."
+  },
+  {
+    "title": "Nutrition Research Project",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Researched the relationship between energy drinks and athletic performance using scientific sources."
+  },
+  {
+    "title": "GitHub API Profile Display",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Used JavaScript and the GitHub API to display profile statistics dynamically."
+  },
+  {
+    "title": "Responsive Website Design",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Designed a website that adjusts its layout for different screen sizes using CSS."
+  },
+  {
+    "title": "Dark Mode Website Feature",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Created light, dark, and automatic theme options using JavaScript and local storage."
+  },
+  {
+    "title": "Resume Website Page",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Created a structured online resume using HTML sections, articles, lists, and dates."
+  },
+  {
+    "title": "Contact Form Project",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Created a JavaScript-powered contact form that opens an email with a prefilled subject and message."
+  },
+  {
+    "title": "NBA Statistics Visualization",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Created visualizations to compare NBA player statistics and identify performance patterns."
+  },
+  {
+    "title": "UC Admissions Data Visualization",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Created charts showing trends in University of California admissions and racial diversity."
+  },
+  {
+    "title": "Personal Data Science Portfolio",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Organized academic, programming, and data science projects into a personal portfolio website."
+  }
+]
