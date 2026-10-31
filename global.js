@@ -114,8 +114,11 @@ export async function fetchJSON(url) {
       article.innerHTML = `
         <${headingLevel}>${project.title}</${headingLevel}>
         <img src="${project.image}" alt="${project.title}">
-        <p>${project.description}</p>
-      `;
+        <div>
+         <p>${project.description}</p>
+         <time datetime="${project.year}">${project.year}</time>
+        </div>
+    `;
   
       containerElement.appendChild(article);
     }
