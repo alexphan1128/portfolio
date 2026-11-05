@@ -254,3 +254,102 @@ time {
     max-width: 20em;
   }
 }
+/* Lab 6 statistics */
+.stats {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5em 1em;
+  max-width: 35em;
+}
+
+.stats dt {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.stats dd {
+  margin: 0;
+}
+
+/* Lab 6 chart */
+#chart {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#chart svg {
+  width: 100%;
+  min-width: 700px;
+  height: auto;
+}
+
+.gridlines line {
+  stroke: gray;
+  stroke-opacity: 0.25;
+}
+
+.gridlines path {
+  display: none;
+}
+
+#chart circle {
+  cursor: pointer;
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#chart circle:hover {
+  transform: scale(1.5);
+}
+
+#chart circle.selected {
+  fill: #ff6b6b;
+  stroke: white;
+  stroke-width: 2px;
+}
+
+/* Tooltip */
+dl.info {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4em 1em;
+  margin: 0;
+}
+
+dl.info dt {
+  color: gray;
+  font-weight: bold;
+}
+
+dl.info dd {
+  margin: 0;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 10;
+  max-width: 300px;
+  padding: 1em;
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  background: Canvas;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 25%);
+  pointer-events: none;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 300ms,
+    visibility 300ms;
+}
+
+/* Brush selection */
+.selection {
+  fill: var(--color-accent);
+  fill-opacity: 0.15;
+  stroke: var(--color-accent);
+  stroke-dasharray: 5 3;
+}
