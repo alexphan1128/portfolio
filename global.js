@@ -19,7 +19,8 @@ document.body.insertAdjacentHTML(
 );
 
 const BASE_PATH =
-  location.hostname === "localhost" || location.hostname === "127.0.0.1"
+  location.hostname === "localhost" ||
+  location.hostname === "127.0.0.1"
     ? "/"
     : "/portfolio/";
 
@@ -28,34 +29,43 @@ const pages = [
   { url: "projects/", title: "Projects" },
   { url: "contact/", title: "Contact" },
   { url: "resume/", title: "Resume" },
-  { url: "https://github.com/alexphan1128", title: "GitHub" },
+  { url: "meta/", title: "Meta" },
+  {
+    url: "https://github.com/alexphan1128",
+    title: "GitHub",
+  },
 ];
 
 const nav = document.createElement("nav");
 document.body.prepend(nav);
 
-for (let page of pages) {
+for (const page of pages) {
   let url = page.url;
 
   if (!url.startsWith("http")) {
     url = BASE_PATH + url;
   }
 
-  let link = document.createElement("a");
+  const link = document.createElement("a");
   link.href = url;
   link.textContent = page.title;
 
-  if (link.host === location.host && link.pathname === location.pathname) {
+  if (
+    link.host === location.host &&
+    link.pathname === location.pathname
+  ) {
     link.classList.add("current");
   }
 
   if (link.host !== location.host) {
     link.target = "_blank";
+    link.rel = "noopener noreferrer";
   }
 
   nav.append(link);
 }
-let select = document.querySelector(".color-scheme select");
+
+const select = document.querySelector(".color-scheme select");
 
 function setColorScheme(colorScheme) {
   document.documentElement.style.setProperty(
@@ -66,7 +76,7 @@ function setColorScheme(colorScheme) {
   select.value = colorScheme;
 }
 
-select.addEventListener("input", function (event) {
+select.addEventListener("input", (event) => {
   setColorScheme(event.target.value);
   localStorage.colorScheme = event.target.value;
 });
@@ -74,59 +84,66 @@ select.addEventListener("input", function (event) {
 if ("colorScheme" in localStorage) {
   setColorScheme(localStorage.colorScheme);
 }
-let form = document.querySelector("form");
 
-form?.addEventListener("submit", function (event) {
+const form = document.querySelector("form");
+
+form?.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  let data = new FormData(form);
-  let subject = encodeURIComponent(data.get("subject"));
-  let body = encodeURIComponent(data.get("body"));
+  const data = new FormData(form);
+  const subject = encodeURIComponent(data.get("subject"));
+  const body = encodeURIComponent(data.get("body"));
 
-  let mailto = `mailto:ahp009@ucsd.edu?subject=${subject}&body=${body}`;
+  const mailto =
+    `mailto:ahp009@ucsd.edu?subject=${subject}&body=${body}`;
 
   window.location.href = mailto;
 });
+
 export async function fetchJSON(url) {
-    try {
-      const response = await fetch(url);
-  
-      if (!response.ok) {
-        throw new Error(`Failed to fetch projects: ${response.statusText}`);
-      }
-  
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching or parsing JSON data:", error);
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch data: ${response.statusText}`,
+      );
     }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching or parsing JSON data:", error);
+    return null;
   }
-  export function renderProjects(
-    projects,
-    containerElement,
-    headingLevel = "h2",
-  ) {
-    containerElement.innerHTML = "";
-  
-    for (let project of projects) {
-      const article = document.createElement("article");
-  
-      article.innerHTML = `
-        <${headingLevel}>${project.title}</${headingLevel}>
-        <img src="${project.image}" alt="${project.title}">
-        <div>
-         <p>${project.description}</p>
-         <time datetime="${project.year}">${project.year}</time>
-        </div>
+}
+
+export function renderProjects(
+  projects,
+  containerElement,
+  headingLevel = "h2",
+) {
+  containerElement.innerHTML = "";
+
+  for (const project of projects) {
+    const article = document.createElement("article");
+
+    article.innerHTML = `
+      <${headingLevel}>${project.title}</${headingLevel}>
+      <img src="${project.image}" alt="${project.title}">
+      <div>
+        <p>${project.description}</p>
+        <time datetime="${project.year}">
+          ${project.year}
+        </time>
+      </div>
     `;
-  
-      containerElement.appendChild(article);
-    }
+
+    containerElement.appendChild(article);
   }
-  export async function fetchGithubData(username) {
-    return fetchJSON(`https://api.github.com/users/${username}`);
-  }
-  {
-    url: "meta/index.html",
-    title: "Meta"
-  }
+}
+
+export async function fetchGithubData(username) {
+  return fetchJSON(
+    `https://api.github.com/users/${username}`,
+  );
+}
