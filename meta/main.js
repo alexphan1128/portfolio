@@ -383,17 +383,28 @@ const timeScale = d3
 
 let commitMaxTime = timeScale.invert(commitProgress);
 
-const slider = document.getElementById("commit-progress");
-const timeElement = document.getElementById("commit-time");
+// Two sliders (scatter plot + file dots) that share the same state
+const sliders = [
+  document.getElementById("commit-progress"),
+  document.getElementById("file-progress"),
+];
+const timeElements = [
+  document.getElementById("commit-time"),
+  document.getElementById("file-time"),
+];
 
-// One function that every control (slider or scroll) goes through
+// One function that every control (sliders or scroll) goes through
 function updateAll() {
   filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
 
-  timeElement.textContent = commitMaxTime.toLocaleString("en", {
-    dateStyle: "long",
-    timeStyle: "short",
-  });
+  // keep both sliders and both time labels in sync
+  for (const s of sliders) s.value = commitProgress;
+  for (const t of timeElements) {
+    t.textContent = commitMaxTime.toLocaleString("en", {
+      dateStyle: "long",
+      timeStyle: "short",
+    });
+  }
 
   updateScatterPlot(data, filteredCommits);
   renderCommitInfo(
@@ -403,14 +414,14 @@ function updateAll() {
   updateFileDisplay(filteredCommits);
 }
 
-function onTimeSliderChange() {
-  commitProgress = Number(slider.value);
+function onTimeSliderChange(event) {
+  commitProgress = Number(event.target.value);
   commitMaxTime = timeScale.invert(commitProgress);
   updateAll();
 }
 
-slider.addEventListener("input", onTimeSliderChange);
-onTimeSliderChange();
+for (const s of sliders) s.addEventListener("input", onTimeSliderChange);
+onTimeSliderChange({ target: sliders[0] });
 
 // Step 3.2: one story step per commit
 d3.select("#scatter-story")
@@ -448,7 +459,6 @@ function onStepEnter(response) {
 
   // keep the slider in sync with the scroll position
   commitProgress = timeScale(commitMaxTime);
-  slider.value = commitProgress;
 
   updateAll();
 }
