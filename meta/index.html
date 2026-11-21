@@ -43,6 +43,15 @@
   <section>
     <h2>The Race for the Biggest File</h2>
     <p>Each dot is one line of code, colored by technology.</p>
+
+    <div id="file-filter" class="time-filter">
+      <label>
+        Show commits until:
+        <input type="range" id="file-progress" min="0" max="100" value="100">
+      </label>
+      <time id="file-time"></time>
+    </div>
+
     <dl id="files"></dl>
   </section>
 
