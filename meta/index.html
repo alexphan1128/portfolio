@@ -7,27 +7,43 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 
-<body>
+<body class="meta-page">
   <h1>Code Analysis</h1>
 
   <p>
     This page analyzes the code and commit history of my portfolio website.
+    Scroll through the story on the left to watch the codebase grow.
   </p>
-
-  <section>
-    <h2>Summary Statistics</h2>
-    <div id="stats"></div>
-  </section>
 
   <section>
     <h2>Commits by Time of Day</h2>
 
-    <div id="chart"></div>
+    <div id="scrolly-1">
+      <div id="scatter-story"></div>
 
-    <p id="selection-count">No commits selected</p>
+      <div id="scatter-plot">
+        <div id="time-filter">
+          <label>
+            Show commits until:
+            <input type="range" id="commit-progress" min="0" max="100" value="100">
+          </label>
+          <time id="commit-time"></time>
+        </div>
 
-    <h2>Language Breakdown</h2>
-    <dl id="language-breakdown" class="stats"></dl>
+        <div id="stats"></div>
+
+        <div id="chart"></div>
+
+        <p id="selection-count">No commits selected</p>
+        <dl id="language-breakdown" class="stats"></dl>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Race for the Biggest File</h2>
+    <p>Each dot is one line of code, colored by technology.</p>
+    <dl id="files"></dl>
   </section>
 
   <dl id="commit-tooltip" class="info tooltip" hidden>
